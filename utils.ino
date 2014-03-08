@@ -1,4 +1,4 @@
-void getWheelAngle(){
+void getWheelAngle(double wheelAngle){
  
    //read the analog values from the accelerometer
   int xRead = analogRead(xPin);
@@ -12,6 +12,9 @@ void getWheelAngle(){
   //atan2 outputs the value of -π to π (radians)
   //We are then converting the radians to degrees
   wheelAngle = RAD_TO_DEG * (atan2(-yAng, -xAng) + PI);
+  
+  wheelAngle = wheelAngle + wheelAngleOffset;
+  
 }
 
 
