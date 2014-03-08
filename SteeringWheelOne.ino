@@ -23,12 +23,11 @@ int       maxValy = 610; // Calibration for the accelerometer
 const int overallDelay = 0;      // Speeding down things for debug
 int       wheelAngleOffset = 20; // Calibration for the accelerometer
 int       turnEffectLevel = 80;
-
 int       startScreenDelay = 1000;
 
 // CONSTANTS FOR BORING THINGS LIKE PIN ASSIGNMENTS
-const int buttonInput1 = 4;      // input pin for pushbutton
-const int buttonInput2 = 5;      // input pin for pushbutton
+const int buttonInput1 = 5;      // input pin for pushbutton
+const int buttonInput2 = 4;      // input pin for pushbutton
 const int buttonInput3 = 10;      // input pin for pushbutton
 const int xPin = 0;
 const int yPin = 1;
@@ -75,7 +74,10 @@ void setup() { // setup routine - is run once, before the loop() kicks off
 // MAIN LOOP ROUTINE
 void loop() {
 
-
+  getWheelAngle();
+    
+  wheelAngle = map(constrain(wheelAngle, 0 + turnEffectLevel,360 - turnEffectLevel), 0 + turnEffectLevel, 360 - turnEffectLevel,0,360);
+ 
 
   switch (modeSelected) {
   case 1:
@@ -84,16 +86,17 @@ void loop() {
   case 2:
      mode2Selected();
     break;
+  case 3:
+     mode3Selected();
+    break;
+
     //default: 
     // statements
   }
 
 
 
-  getWheelAngle(wheelAngle);
-    
-  wheelAngle = map(constrain(wheelAngle, 0 + turnEffectLevel,360 - turnEffectLevel), 0 + turnEffectLevel, 360 - turnEffectLevel,0,360);
-  
+ 
   DACval = (map(wheelAngle,0,360,0,255))/(3.3/1.7);  // Set DAC value to correspond with what the original potentiometer would output 
   
   setDAC(DACval);

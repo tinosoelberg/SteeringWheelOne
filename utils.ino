@@ -1,4 +1,4 @@
-void getWheelAngle(double wheelAngle){
+void getWheelAngle(){
  
    //read the analog values from the accelerometer
   int xRead = analogRead(xPin);

@@ -3,7 +3,43 @@ void mode1Selected(){
 
   if (newModeSelected){
 
-    for (int i=0; i < 3; i++){
+    for (int i=0; i < 5; i++){
+      
+    int ledArray = 0;
+    updateLeds(ledArray);
+    
+    bitSet(ledArray, 0);
+    updateLeds(ledArray);
+
+    delay(50); 
+    
+    ledArray = 0;
+    updateLeds(ledArray);
+    delay(50); 
+    }
+
+    delay(300); 
+    
+
+  }
+
+
+
+    ledArray = 0;
+    updateLeds(ledArray);
+    bitSet(ledArray, map(wheelAngle,0,360,0,4));
+    updateLeds(ledArray);
+
+  
+}
+
+
+// MODE 2 - Sensitivity correction
+void mode2Selected(){
+
+  if (newModeSelected){
+
+    for (int i=0; i < 5; i++){
       
     int ledArray = 0;
     updateLeds(ledArray);
@@ -12,8 +48,14 @@ void mode1Selected(){
     updateLeds(ledArray);
 
     delay(50); 
+    
+    ledArray = 0;
+    updateLeds(ledArray);
+    delay(50); 
     }
-  }
+
+    delay(300); 
+ }
 
 
   if ( button1IsPressed() ) {
@@ -21,35 +63,37 @@ void mode1Selected(){
     if (turnEffectLevel < 60) { 
         turnEffectLevel = 60;
     }    
-    int ledArray = 0;
-    updateLeds(ledArray);
-    bitSet(ledArray, map(turnEffectLevel,60,110,0,4));
-    updateLeds(ledArray);
+
 
   }
 
   if ( button2IsPressed() ) {
     turnEffectLevel = turnEffectLevel + 10;
-    if (turnEffectLevel > 110) { 
-        turnEffectLevel = 110;
+    if (turnEffectLevel > 100) { 
+        turnEffectLevel = 100;
     }    
-    int ledArray = 0;
-    updateLeds(ledArray);
-    bitSet(ledArray, map(turnEffectLevel,60,110,0,4));
-    updateLeds(ledArray);
+
   }
+
+    ledArray = 0;
+    updateLeds(ledArray);
+    bitSet(ledArray, map(turnEffectLevel,60,100,2,4));
+    updateLeds(ledArray);
+    ledArray = 0;
+    bitSet(ledArray, map(turnEffectLevel,60,100,2,0));
+    updateLeds(ledArray);
 
   
 }
 
 
 
-// MODE 2 - Angle calibration
-void mode2Selected(){
+// MODE 3 - Angle calibration
+void mode3Selected(){
 
-  if (newModeSelected){
+    if (newModeSelected){
 
-    for (int i=0; i < 3; i++){
+    for (int i=0; i < 5; i++){
       
     int ledArray = 0;
     updateLeds(ledArray);
@@ -58,8 +102,17 @@ void mode2Selected(){
     updateLeds(ledArray);
 
     delay(50); 
+    
+    ledArray = 0;
+    updateLeds(ledArray);
+    delay(50); 
     }
+
+    delay(300); 
+    
   }
+  
+ 
 
 
   if ( button1IsPressed() ) {
@@ -67,23 +120,19 @@ void mode2Selected(){
     if (wheelAngleOffset < 10) { 
         wheelAngleOffset = 10;
     }    
-    int ledArray = 0;
-    updateLeds(ledArray);
-    bitSet(ledArray, map(wheelAngleOffset,10,30,0,4));
-    updateLeds(ledArray);
   }
 
   if ( button2IsPressed() ) {
-    wheelAngleOffset = wheelAngleOffset + 10;
+    wheelAngleOffset = wheelAngleOffset + 5;
     if (wheelAngleOffset > 30) { 
         wheelAngleOffset = 30;
     }    
-    int ledArray = 0;
-    updateLeds(ledArray);
-    bitSet(ledArray, map(wheelAngleOffset,10,30,0,4));
-    updateLeds(ledArray);
   }
 
+  ledArray = 0;
+  updateLeds(ledArray);
+  bitSet(ledArray, map(wheelAngleOffset,10,30,0,4));
+  updateLeds(ledArray);
   
 }
 
@@ -104,7 +153,7 @@ void modeSelect(){
     newModeSelected = true;
     modeSelected++;
 
-    if (modeSelected == 3) { 
+    if (modeSelected > 3) { 
         modeSelected = 1;
     } 
     // type out a message
@@ -125,7 +174,7 @@ void  displayLedStartSequence() {
     bitSet(ledArray, 4);
     updateLeds(ledArray);
 
-    delay(50);
+    delay(500);
     
     ledArray = 0;
     updateLeds(ledArray);
@@ -134,7 +183,7 @@ void  displayLedStartSequence() {
     bitSet(ledArray, 3);
     updateLeds(ledArray);
 
-    delay(50);
+    delay(500);
     
     ledArray = 0;
     updateLeds(ledArray);
@@ -142,7 +191,7 @@ void  displayLedStartSequence() {
     bitSet(ledArray, 2);
     updateLeds(ledArray);
  
-    delay(50);
+    delay(500);
 
     ledArray = 0;
     updateLeds(ledArray);
