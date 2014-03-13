@@ -59,28 +59,28 @@ void mode2Selected(){
 
 
   if ( button1IsPressed() ) {
-    turnEffectLevel = turnEffectLevel - 10;
-    if (turnEffectLevel < 60) { 
-        turnEffectLevel = 60;
+    turnEffectLevel = turnEffectLevel - 20;
+    if (turnEffectLevel < 40) { 
+        turnEffectLevel = 40;
     }    
 
 
   }
 
   if ( button2IsPressed() ) {
-    turnEffectLevel = turnEffectLevel + 10;
-    if (turnEffectLevel > 100) { 
-        turnEffectLevel = 100;
+    turnEffectLevel = turnEffectLevel + 20;
+    if (turnEffectLevel > 120) { 
+        turnEffectLevel = 120;
     }    
 
   }
 
     ledArray = 0;
     updateLeds(ledArray);
-    bitSet(ledArray, map(turnEffectLevel,60,100,2,4));
+    bitSet(ledArray, map(turnEffectLevel,40,120,2,4));
     updateLeds(ledArray);
     ledArray = 0;
-    bitSet(ledArray, map(turnEffectLevel,60,100,2,0));
+    bitSet(ledArray, map(turnEffectLevel,40,120,2,0));
     updateLeds(ledArray);
 
   
@@ -117,21 +117,21 @@ void mode3Selected(){
 
   if ( button1IsPressed() ) {
     wheelAngleOffset = wheelAngleOffset - 5;
-    if (wheelAngleOffset < 10) { 
-        wheelAngleOffset = 10;
+    if (wheelAngleOffset < 5) { 
+        wheelAngleOffset = 5;
     }    
   }
 
   if ( button2IsPressed() ) {
     wheelAngleOffset = wheelAngleOffset + 5;
-    if (wheelAngleOffset > 30) { 
-        wheelAngleOffset = 30;
+    if (wheelAngleOffset > 25) { 
+        wheelAngleOffset = 25;
     }    
   }
 
   ledArray = 0;
   updateLeds(ledArray);
-  bitSet(ledArray, map(wheelAngleOffset,10,30,0,4));
+  bitSet(ledArray, map(wheelAngleOffset,5,25,0,4));
   updateLeds(ledArray);
   
 }

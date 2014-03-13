@@ -21,7 +21,7 @@ int       maxValx = 620; // Calibration for the accelerometer
 int       minValy = 400; // Calibration for the accelerometer
 int       maxValy = 610; // Calibration for the accelerometer
 const int overallDelay = 0;      // Speeding down things for debug
-int       wheelAngleOffset = 20; // Calibration for the accelerometer
+int       wheelAngleOffset = 15; // Calibration for the accelerometer
 int       turnEffectLevel = 80;
 int       startScreenDelay = 1000;
 
